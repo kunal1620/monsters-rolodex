@@ -1,0 +1,17 @@
+.search {
+    -webkit-appearance: none;
+    border: 2px solid #0ccac4;
+    outline: none;
+    padding: 10px;
+    width: 300px;
+    line-height: 30px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    font-size: 1.2em;
+    color: #099b96;
+    text-align: center;
+  }
+
+  ::placeholder {
+      color: #099b96;
+  }
