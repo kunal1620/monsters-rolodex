@@ -4,7 +4,6 @@ import Card from "../../components/card/card";
 import "./profile-page-styles.css";
 
 const ProfilePage = ({ history, match }) => {
-  // Adding nested key to be able to access it after the full object is loaded
   const [userProfile, setUserProfile] = useState({});
 
   const API_USER_DETAIL = "https://jsonplaceholder.typicode.com/users/";
