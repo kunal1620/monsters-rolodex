@@ -1,46 +1,23 @@
 import React, { Component } from "react";
-import "./App.css";
+import { Route } from "react-router-dom";
+
+import HomePage from "./pages/home-page/home-page";
+import ProfilePage from "./pages/profile-page/profile-page";
 
 import CardList from "./components/card-list/card-list";
 import SearchBar from "./components/search-bar/search-bar";
 
-class App extends Component {
-  constructor() {
-    super();
+import "./App.css";
 
-    this.state = {
-      monsters: [],
-      searchField: "",
-    };
-  }
+const App = () => {
+  const ROOT_PATH = "/monsters-rolodex";
 
-  componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => this.setState({ monsters: users }));
-  }
-
-  handleSearchChange = (e) => {
-    this.setState({ searchField: e.target.value });
-  };
-
-  render() {
-    const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter((m) =>
-      m.name.toLowerCase().includes(searchField.toLowerCase())
-    );
-
-    return (
-      <div className="App">
-        <h1>Monsters Rolodex</h1>
-        <SearchBar
-          placeholder="Search Monsters"
-          handleChange={this.handleSearchChange}
-        />
-        <CardList monsters={filteredMonsters} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Route exact path={ROOT_PATH} component={HomePage} />
+      <Route path={`${ROOT_PATH}/:monsterId`} component={ProfilePage} />
+    </div>
+  );
+};
 
 export default App;
